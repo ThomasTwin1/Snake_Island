@@ -1,0 +1,83 @@
+
+print('''
+*******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\ ` . "-._ /_______________|_______
+|                   | |o ;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+
+#Note to self: Make a game where the less amount of choices causes you to escape the island.
+print("Welcome to Snake Island.")
+print("Your mission is to escape the island with the contents inside the snake treasure chest.")
+player = input("What is your name? \n")
+
+# Scenario 1
+forest_scenario = input('''You are walking through a forest and a giant rattlesnake drops from a tree and lands in front of you.\n 
+Do you want to go left, right, or fight?\n''').lower()
+
+if forest_scenario in ["left", "Left", "l", "L"]:
+    print("You fell into a snake pit. Game Over!")
+    exit()
+elif forest_scenario in ["right", "Right", "r", "R"]:
+    print("A tiger ambushed you and bit your neck, causing you to bleed to death. Game Over!")
+    exit()
+elif forest_scenario in ["fight", "f", "Fight", "F"]:
+    print('''You see a dark glowing sword with the words 'Snake Blade'
+engraved near the tip of the blade a few inches in front of you, hidden in tall grass.
+You grab the Snake Blade and chop off the snake's head as it lunges at you.
+The Snake Blade rattles and hisses, then settles down. 
+As you move forward, you see a rickety bridge.''')
+else:
+    print("Invalid response. Start over.")
+    exit()
+
+# Scenario 2
+print('''\nYou see an open treasure chest in the middle of a rickety bridge,
+but you can't see inside.
+There is a bald eagle hovering over the treasure chest.''')
+
+bridge_scenario = input("\nDo you want to attack the eagle? (Yes/No)\n").lower()
+
+if bridge_scenario in ["yes", "Yes", "y", "Y"]:
+    print('''The Snake Blade knows your intent and viciously stretches itself towards the eagle; piercing it through the heart and poisoning it.
+The eagle falls on the bridge, sending the treasure chest flying toward you; knocking you unconscious. Game Over!''')
+    exit()
+elif bridge_scenario in ["no", "No", "n", "N"]:
+    print('''The eagle reads your mind and gives you the treasure chest then flies away.
+    The treasure chest is encrypted with some type of morse code. Engraved on the top of treasure chest
+    is the following message: Szld sgd rmzjd hmrhcd.  As you ponder on the message you notice a dial with
+    the english alphabet on the back of the treasure chest with the message: 
+    Solve the code and get the gold, but get it wrong struggle till dawn. ''' )
+
+else:
+    print("Invalid response. Start over.")
+    exit()
+
+treasure_code = input("\nWhat is your guess?").lower()
+
+if treasure_code in ["Tame the Snake Blade"]
+    print('''The snake blade rattles and hisses as you decode the message."
+    You open the chest and find a vial full of purple liquid. The snake blade wraps around the vial
+    attempting to break it.''')
+
+
+
+
+
+
