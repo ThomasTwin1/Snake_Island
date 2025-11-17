@@ -1,0 +1,261 @@
+print('''
+*******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\ ` . "-._ /_______________|_______
+|                   | |o ;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+
+def show_health(health):
+    hearts = "❤ " * health
+    print(f"\nHealth: {hearts}({health})")
+
+def snake_island():
+    print("Welcome to Snake Island.")
+    print("Your mission is to escape the island with the treasure chest.")
+
+    player = input("What is your name?\n").strip()
+    if not player:
+        player = "Adventurer"
+
+    health = 3
+    choices_made = 0
+
+    show_health(health)
+
+    # =====================
+    # Scenario 1 – Forest
+    # =====================
+    while True:
+        forest_scenario = input(
+            '''\nYou are walking through a forest and a giant rattlesnake drops from a tree and lands in front of you!
+
+Choose:
+[ L ] Left
+[ R ] Right
+[ F ] Fight
+
+Your choice: '''
+        ).strip().lower()
+        choices_made += 1
+
+        if forest_scenario in ("left", "l"):
+            print('''\nYou go left and the ground crumbles under you!
+You fall into a shallow pit and several small snakes bite your legs
+before you scramble out.''')
+            health -= 1
+            if health <= 0:
+                show_health(health)
+                print("\nYou collapse from the venom and your injuries. Game Over!")
+                print(f"Total choices made: {choices_made}")
+                return
+            else:
+                show_health(health)
+                print("You climb out of the pit and find yourself back where you started.")
+                # loop back, let them choose again
+
+        elif forest_scenario in ("right", "r"):
+            print('''\nYou go right and a tiger lunges from the bushes!
+You manage to block it with a fallen branch, but its claws rake your side
+before it runs off into the jungle.''')
+            health -= 1
+            if health <= 0:
+                show_health(health)
+                print("\nYou can't handle the pain and you pass out. Game Over!")
+                print(f"Total choices made: {choices_made}")
+                return
+            else:
+                show_health(health)
+                print("You stagger back to the clearing, face to face with the giant rattlesnake again.")
+
+        elif forest_scenario in ("fight", "f"):
+            print('''\nYou choose to fight!
+You see a dark glowing sword with the words 'Snake Blade'
+engraved near the tip of the blade a few inches in front of you, hidden in tall grass.
+You grab the Snake Blade and chop off the snake's head as it lunges at you.
+The Snake Blade rattles and hisses, then settles down.
+As you move forward, you see a rickety bridge ahead.''')
+            break  # move on to the next scenario
+
+        else:
+            print("\n❌ Invalid response. Please choose L, R, or F.\n")
+
+    # =====================
+    # Scenario 2 – Bridge
+    # =====================
+    print('''\nYou see an open treasure chest in the middle of a rickety bridge,
+but you can't see inside.
+There is a bald eagle hovering over the treasure chest.''')
+
+    while True:
+        bridge_scenario = input(
+            "\nDo you want to attack the eagle? (Y/N)\nYour choice: "
+        ).strip().lower()
+        choices_made += 1
+
+        if bridge_scenario in ("yes", "y"):
+            print('''\nYou swing the Snake Blade at the eagle!
+The eagle dodges, but the blade slices through the ropes of the bridge.
+The bridge collapses beneath you and you slam into the side of the ravine
+before splashing into the river below.
+
+You wash up, coughing and bruised, on a rocky ledge.''')
+            health -= 1
+            if health <= 0:
+                show_health(health)
+                print("\nYour body can't take any more punishment. Game Over!")
+                print(f"Total choices made: {choices_made}")
+                return
+            else:
+                show_health(health)
+                print("You climb a narrow path from the ravine and eventually reach a high cliff overlooking the island.")
+                break  # still progress, just hurt
+
+        elif bridge_scenario in ("no", "n"):
+            print('''\nYou decide not to attack.
+The eagle tilts its head, then gently lifts the treasure chest with its talons
+and signals for you to climb onto its back.
+The eagle carries you away from the bridge and across the island...''')
+            break
+
+        else:
+            print("\n❌ Invalid response. Please choose Y or N.\n")
+
+    # =====================
+    # Scenario 3 – Cliffside Paths
+    # =====================
+    print('''\nThe eagle drops you and the treasure chest safely on a high cliff.
+From here, you can see the whole island.
+Two paths lead away from the cliff:
+
+- A dark tunnel leading into a mountain cave.
+- A narrow path that winds down toward a distant beach.''')
+
+    while True:
+        cliff_scenario = input(
+            "\nWhere do you go?\n[ C ] Cave\n[ B ] Beach\nYour choice: "
+        ).strip().lower()
+        choices_made += 1
+
+        if cliff_scenario in ("cave", "c"):
+            print('''\nYou head into the cave, carrying the Snake Blade and the chest.
+The air grows cold and you hear loud hissing echoing off the walls.
+Dozens of glowing eyes appear in the darkness.
+A swarm of snakes lunges at you, but you swing the Snake Blade wildly,
+driving them back. Several manage to bite you before slithering away.''')
+            health -= 1
+            if health <= 0:
+                show_health(health)
+                print("\nYour vision blurs as the venom spreads. Game Over!")
+                print(f"Total choices made: {choices_made}")
+                return
+            else:
+                show_health(health)
+                print("You stumble back out of the cave and return to the cliff. Maybe the beach is a better idea...")
+
+        elif cliff_scenario in ("beach", "b"):
+            print('''\nYou follow the path toward the beach.
+After a long walk, you arrive at an old wooden dock.
+An abandoned rowboat is tied to a post, but it looks like it's missing something.''')
+            break
+
+        else:
+            print("\n❌ Invalid response. Please choose C or B.\n")
+
+    # =====================
+    # Scenario 4 – The Dock
+    # =====================
+    print('''\nAt the dock, you see:
+
+- A small wooden hut near the tree line.
+- Shallow water with something shiny beneath the surface.
+- A cluster of tall palm trees with rustling leaves.
+
+The rowboat won’t move until you find what it needs.''')
+
+    while True:
+        dock_scenario = input(
+            "\nWhere do you search?\n[ H ] Hut\n[ W ] Water\n[ T ] Trees\nYour choice: "
+        ).strip().lower()
+        choices_made += 1
+
+        if dock_scenario in ("hut", "h"):
+            print('''\nYou walk to the hut and slowly push the door open.
+Inside, you find:
+
+- Two sturdy oars.
+- A small repair kit.
+- A faded map labeled: "Safe Waters."
+
+You repair the boat, attach the oars, and place the treasure chest inside.''')
+            break
+
+        elif dock_scenario in ("water", "w"):
+            print('''\nYou step into the shallow water and reach for the shiny object.
+As your hand closes around it, the sand shifts beneath your feet.
+A giant sea snake bursts from the water and knocks you back onto the shore
+with a powerful tail strike.''')
+            health -= 1
+            if health <= 0:
+                show_health(health)
+                print("\nYou black out on the sand. Game Over!")
+                print(f"Total choices made: {choices_made}")
+                return
+            else:
+                show_health(health)
+                print("The sea snake disappears back into the water. Maybe searching somewhere else is safer.")
+
+        elif dock_scenario in ("trees", "t"):
+            print('''\nYou search the trees and climb one to get a better view.
+As you reach for a coconut, a group of monkeys appears.
+They start throwing coconuts at you!
+One nails you in the head and you crash down onto the sand.''')
+            health -= 1
+            if health <= 0:
+                show_health(health)
+                print("\nYou lie still beneath the palm tree. Game Over!")
+                print(f"Total choices made: {choices_made}")
+                return
+            else:
+                show_health(health)
+                print("You drag yourself back toward the dock, deciding maybe the hut is your best bet.")
+
+        else:
+            print("\n❌ Invalid response. Please choose H, W, or T.\n")
+
+    # =====================
+    # Final Escape
+    # =====================
+    print('''\nYou load the treasure chest into the repaired boat and push off from the dock.
+The water is calm as you row away from Snake Island.
+Behind you, you hear distant hissing, but it slowly fades.
+
+You have escaped the island with the treasure!''')
+
+    show_health(health)
+    print(f"\nYou escaped in {choices_made} choices, {player}.")
+
+    if choices_made <= 4:
+        print("Rank: S – Snake Island speedrunner! 🐍🏆")
+    elif choices_made <= 7:
+        print("Rank: A – Efficient escape artist! ⚓")
+    else:
+        print("Rank: B – A little bumpy, but you made it off alive. 🏝️")
+
+# Run the game
+snake_island()
